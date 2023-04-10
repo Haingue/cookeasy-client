@@ -1,3 +1,8 @@
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+import ProductForm from './components/ProductForm.vue'
+</script>
+
 <template>
   <header>
     header
@@ -15,26 +20,17 @@
   </footer>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-import ProductForm from './components/ProductForm.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-    ProductForm
-  }
+<style scoped>
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
