@@ -1,36 +1,20 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import ProductForm from './components/ProductForm.vue'
 </script>
 
 <template>
   <header>
-    header
+    <h1>Cookeasy</h1>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/test">Test</router-link> |
+    <router-link to="/about">About</router-link>
   </header>
   <main>
-    Main
-    <br/>
-    <product-form />
-    <br/>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view />
   </main>
   <footer>
-    footer
+    © Groupun - Cookeasy 2023
   </footer>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>

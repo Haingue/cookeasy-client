@@ -75,6 +75,11 @@ button:focus-visible {
   text-align: center;
 }
 
+#app footer {
+  font-size: 0.6em;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
