@@ -3,7 +3,7 @@
     <input v-model="name" type="text" maxlength="64" />
     <input v-model="descripton" type="text" maxlength="64" />
     <input v-model="nutritionalScore" type="number" min=0 max=5 step=0.5 />
-    <button>Submit</button>
+    <button type="button">Submit</button>
   </form>
 </template>
 
