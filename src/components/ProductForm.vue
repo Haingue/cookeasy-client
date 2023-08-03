@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { Product } from '../dto/Product'
 export default {
   name: 'ProductForm',
   props: {
@@ -17,22 +18,22 @@ export default {
     name: null,
     descripton: null,
     nutritionalScore: null,
-    type: [],
-    category: [],
+    type: null,
+    category: null,
     allergens: [],
     isBusy: false
   }),
   methods: {
     saveProduct: async function () {
       this.isBusy = true
-      const product = {
+      const product = new Product({
         name: this.name,
         descripton: this.descripton,
         nutritionalScore: this.nutritionalScore,
         type: this.type,
         category: this.category,
         allergens: this.allergens
-      }
+      })
       await new Promise(resolve => setTimeout(resolve, 1000))
       console.debug(`Save product: ${this.name}`, product)
       this.isBusy = false

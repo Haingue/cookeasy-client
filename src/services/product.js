@@ -1,26 +1,57 @@
+const PRODUCT_API = "http://localhost:8086";
 
-const PRODUCT_API = 'http://localhost:8086'
-
-import { useStore } from 'vuex'
+import store from "../store";
 
 export default {
-    store: useStore(),
+  getProducts: function () {
+    var JWT = `Bearer ${store.state.user.jwt}`;
+    return fetch(`${PRODUCT_API}/services/product`, {
+      method: "GET",
+      headers: {
+        Authorization: JWT,
+      },
+    });
+  },
 
-    getProducts: function () {
-        return fetch(`${PRODUCT_API}/service/product`, {
-            method: "GET",
-            headers: {
-                'Authorization': store.state.jwt.access_token
-            }
-        })
-    },
+  getProduct: function (id) {
+    var JWT = `Bearer ${store.state.user.jwt}`;
+    return fetch(`${PRODUCT_API}/services/product?id=${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: JWT,
+      },
+    });
+  },
 
-    getProduct: function (id) {
-        return fetch(`${PRODUCT_API}/service/product?id=${id}`, {
-            method: "GET",
-            headers: {
-                'Authorization': store.state.jwt.access_token
-            }
-        })
-    }
-}
+  addProduct: function (product) {
+    var JWT = `Bearer ${store.state.user.jwt}`;
+    return fetch(`${PRODUCT_API}/services/product`, {
+      method: "POST",
+      headers: {
+        Authorization: JWT,
+      },
+      product,
+    });
+  },
+
+  updateProduct: function (product) {
+    var JWT = `Bearer ${store.state.user.jwt}`;
+    return fetch(`${PRODUCT_API}/services/product`, {
+      method: "PUT",
+      headers: {
+        Authorization: JWT,
+      },
+      product,
+    });
+  },
+
+  deleteProduct: function (id) {
+    var JWT = `Bearer ${store.state.user.jwt}`;
+    return fetch(`${PRODUCT_API}/services/product?id=${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: JWT,
+      },
+    });
+  },
+};

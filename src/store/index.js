@@ -1,29 +1,31 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 const store = createStore({
   state() {
     return {
       ui: {
-        local: 'fr'
+        local: "fr",
       },
       user: {
         jwt: null,
+        refreshToken: null,
         username: null,
-        roles: []
-      }
-    }
+        roles: [],
+      },
+    };
   },
   mutations: {
     SET_JWT(state, payload) {
-      state.user.jwt = payload
-      sessionStorage('jwt', payload)
-    }
+      state.user.jwt = payload.access_token;
+      state.user.refreshToken = payload;
+      sessionStorage("jwt", payload);
+    },
   },
   actions: {
-    resetStore({ commit }, payload ) {
-      commit('SET_JWT', null)
-    }
-  }
-})
+    resetStore({ commit }, payload) {
+      commit("SET_JWT", null);
+    },
+  },
+});
 
-export default store
+export default store;

@@ -3,10 +3,10 @@
     <input v-model="username" type="text" maxlength="64" />
     <input v-model="password" type="password" maxlength="64" />
     <button type="button" @click="saveProduct">Submit</button>
+    <p v-if=result>
+      Result: {{ result }}
+    </p>
   </form>
-  <p v-if=result>
-    Result: {{ result }}
-  </p>
 </template>
 
 <script>
@@ -24,14 +24,15 @@ export default {
       this.isBusy = true
       Authentication.sigin(this.username, this.password)
         .then(response => {
+          this.result = response.status
           if (response.status === 200) {
             console.debug(`Sigin success: ${response.status}`)
             return response.json()
           }
           throw Error(response)
         })
-        .then(jwt => {
-          this.$store.commit('SET_JWT', jwt)
+        .then(authentication_result => {
+          this.$store.commit('SET_JWT', authentication_result)
           this.result = jwt
         })
         .catch(error => this.$emit('api:error', error))
